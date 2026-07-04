@@ -1,0 +1,34 @@
+{
+  "name": "beam-analysis-mcp",
+  "version": "0.1.0",
+  "description": "Lightweight MCP server for structural analysis of bridges and buildings: built-in 3D beam/frame direct-stiffness solver, CalculiX (ccx) backend, FreeCAD export, and parametric structure generators.",
+  "type": "module",
+  "bin": {
+    "beam-analysis-mcp": "src/server.js"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test test/",
+    "typologies": "node examples/run-typologies.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "structural-analysis",
+    "beam",
+    "frame",
+    "bridge",
+    "calculix",
+    "freecad",
+    "fem"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.23.0"
+  },
+  "license": "MIT"
+}
