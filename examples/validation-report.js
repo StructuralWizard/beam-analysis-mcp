@@ -16,6 +16,12 @@ import {
 
 const OUT = path.resolve('docs', 'validation');
 const IMG = path.join(OUT, 'img');
+// Base for image references inside the generated markdown. Relative "img/" works on
+// GitHub (resolved against the .md file), but many local viewers resolve relative
+// paths against their working directory, so the committed report uses absolute
+// raw.githubusercontent URLs. Override with IMG_BASE=img/ for a fully offline report.
+const IMG_BASE = process.env.IMG_BASE ??
+  'https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/';
 fs.mkdirSync(IMG, { recursive: true });
 if (!findCcx()) {
   console.error('CalculiX not found — the validation report requires ccx.');
@@ -398,7 +404,7 @@ for (const T of TYPOLOGIES) {
       '',
       `The combination above superposes the individual load cases (linear analysis). Deformed shapes:`,
       '',
-      ...T.loadCases.map((lc, i) => `![${lc.name}](img/${num}-lc${i + 1}.svg)`),
+      ...T.loadCases.map((lc, i) => `![${lc.name}](${IMG_BASE}${num}-lc${i + 1}.svg)`),
       '',
       '| Load case | max deflection |',
       '|---|---|',
@@ -434,32 +440,32 @@ for (const T of TYPOLOGIES) {
     '',
     '## Geometry, supports & loads',
     '',
-    `![geometry](img/${num}-geometry.svg)`,
+    `![geometry](${IMG_BASE}${num}-geometry.svg)`,
     '',
     '## CalculiX mesh',
     '',
-    `![mesh](img/${num}-mesh.svg)`,
+    `![mesh](${IMG_BASE}${num}-mesh.svg)`,
     '',
     lcSection,
     '## Deflections (built-in vs CalculiX)',
     '',
-    `![deformed](img/${num}-deformed.svg)`,
+    `![deformed](${IMG_BASE}${num}-deformed.svg)`,
     '',
     '## Internal forces (built-in solver)',
     '',
-    `![moment](img/${num}-moment.svg)`,
-    `![shear](img/${num}-shear.svg)`,
-    `![axial](img/${num}-axial.svg)`,
+    `![moment](${IMG_BASE}${num}-moment.svg)`,
+    `![shear](${IMG_BASE}${num}-shear.svg)`,
+    `![axial](${IMG_BASE}${num}-axial.svg)`,
     '',
     '## Stresses and strains',
     '',
-    `![stress](img/${num}-stress.svg)`,
-    `![strain](img/${num}-strain.svg)`,
+    `![stress](${IMG_BASE}${num}-stress.svg)`,
+    `![strain](${IMG_BASE}${num}-strain.svg)`,
     '',
     '### CalculiX field output (.frd, expanded solid mesh)',
     '',
-    `![ccx stress](img/${num}-ccx-stress.svg)`,
-    `![ccx strain](img/${num}-ccx-strain.svg)`,
+    `![ccx stress](${IMG_BASE}${num}-ccx-stress.svg)`,
+    `![ccx strain](${IMG_BASE}${num}-ccx-strain.svg)`,
     '',
     '## Key results',
     '',

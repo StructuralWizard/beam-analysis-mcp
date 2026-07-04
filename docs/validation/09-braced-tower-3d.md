@@ -8,18 +8,18 @@
 
 ## Geometry, supports & loads
 
-![geometry](img/09-geometry.svg)
+![geometry](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-geometry.svg)
 
 ## CalculiX mesh
 
-![mesh](img/09-mesh.svg)
+![mesh](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-mesh.svg)
 
 ## Load cases
 
 The combination above superposes the individual load cases (linear analysis). Deformed shapes:
 
-![LC1 gravity](img/09-lc1.svg)
-![LC2 wind X](img/09-lc2.svg)
+![LC1 gravity](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-lc1.svg)
+![LC2 wind X](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-lc2.svg)
 
 | Load case | max deflection |
 |---|---|
@@ -31,23 +31,23 @@ The combination above superposes the individual load cases (linear analysis). De
 
 ## Deflections (built-in vs CalculiX)
 
-![deformed](img/09-deformed.svg)
+![deformed](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-deformed.svg)
 
 ## Internal forces (built-in solver)
 
-![moment](img/09-moment.svg)
-![shear](img/09-shear.svg)
-![axial](img/09-axial.svg)
+![moment](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-moment.svg)
+![shear](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-shear.svg)
+![axial](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-axial.svg)
 
 ## Stresses and strains
 
-![stress](img/09-stress.svg)
-![strain](img/09-strain.svg)
+![stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-stress.svg)
+![strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-strain.svg)
 
 ### CalculiX field output (.frd, expanded solid mesh)
 
-![ccx stress](img/09-ccx-stress.svg)
-![ccx strain](img/09-ccx-strain.svg)
+![ccx stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-ccx-stress.svg)
+![ccx strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/09-ccx-strain.svg)
 
 ## Key results
 
@@ -69,4 +69,4 @@ The combination above superposes the individual load cases (linear analysis). De
 | Vertical equilibrium | `ΣV = W` | 11560.9 | 11560.9 kN | 0.0% | ≤ 0.1% | ✅ |
 | Ground-story brace force (wind part) | `N = (N_A − N_B)/2 ≈ (V/4)·L_b/dx` | 69.5 | 56.4 kN | 18.9% | ≤ 25% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 1022 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 999 ms total)*

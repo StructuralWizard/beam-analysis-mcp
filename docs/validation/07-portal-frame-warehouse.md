@@ -8,18 +8,18 @@
 
 ## Geometry, supports & loads
 
-![geometry](img/07-geometry.svg)
+![geometry](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-geometry.svg)
 
 ## CalculiX mesh
 
-![mesh](img/07-mesh.svg)
+![mesh](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-mesh.svg)
 
 ## Load cases
 
 The combination above superposes the individual load cases (linear analysis). Deformed shapes:
 
-![LC1 gravity](img/07-lc1.svg)
-![LC2 lateral wind](img/07-lc2.svg)
+![LC1 gravity](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-lc1.svg)
+![LC2 lateral wind](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-lc2.svg)
 
 | Load case | max deflection |
 |---|---|
@@ -31,23 +31,23 @@ The combination above superposes the individual load cases (linear analysis). De
 
 ## Deflections (built-in vs CalculiX)
 
-![deformed](img/07-deformed.svg)
+![deformed](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-deformed.svg)
 
 ## Internal forces (built-in solver)
 
-![moment](img/07-moment.svg)
-![shear](img/07-shear.svg)
-![axial](img/07-axial.svg)
+![moment](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-moment.svg)
+![shear](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-shear.svg)
+![axial](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-axial.svg)
 
 ## Stresses and strains
 
-![stress](img/07-stress.svg)
-![strain](img/07-strain.svg)
+![stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-stress.svg)
+![strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-strain.svg)
 
 ### CalculiX field output (.frd, expanded solid mesh)
 
-![ccx stress](img/07-ccx-stress.svg)
-![ccx strain](img/07-ccx-strain.svg)
+![ccx stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-ccx-stress.svg)
+![ccx strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/07-ccx-strain.svg)
 
 ## Key results
 
@@ -70,4 +70,4 @@ The combination above superposes the individual load cases (linear analysis). De
 | Right eave moment | `M = |H_right|·h (exact statics)` | 751.4 | 751.4 kN·m | 0.0% | ≤ 0.5% | ✅ |
 | Vertical equilibrium | `ΣV = W` | 360.6 | 360.6 kN | 0.0% | ≤ 0.1% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 69 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 87 ms total)*

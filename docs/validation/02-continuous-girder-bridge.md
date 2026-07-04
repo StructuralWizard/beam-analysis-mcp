@@ -8,32 +8,32 @@
 
 ## Geometry, supports & loads
 
-![geometry](img/02-geometry.svg)
+![geometry](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-geometry.svg)
 
 ## CalculiX mesh
 
-![mesh](img/02-mesh.svg)
+![mesh](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-mesh.svg)
 
 
 ## Deflections (built-in vs CalculiX)
 
-![deformed](img/02-deformed.svg)
+![deformed](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-deformed.svg)
 
 ## Internal forces (built-in solver)
 
-![moment](img/02-moment.svg)
-![shear](img/02-shear.svg)
-![axial](img/02-axial.svg)
+![moment](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-moment.svg)
+![shear](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-shear.svg)
+![axial](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-axial.svg)
 
 ## Stresses and strains
 
-![stress](img/02-stress.svg)
-![strain](img/02-strain.svg)
+![stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-stress.svg)
+![strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-strain.svg)
 
 ### CalculiX field output (.frd, expanded solid mesh)
 
-![ccx stress](img/02-ccx-stress.svg)
-![ccx strain](img/02-ccx-strain.svg)
+![ccx stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-ccx-stress.svg)
+![ccx strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/02-ccx-strain.svg)
 
 ## Key results
 
@@ -55,4 +55,4 @@
 | End reaction | `R = wL₁/2 + M₁/L₁` | 651.0 | 651.0 kN | 0.0% | ≤ 2% | ✅ |
 | Mid-span-2 moment | `M = wL₂²/8 + M₁` | 4442.2 | 4442.2 kN·m | 0.0% | ≤ 6% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 141 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 149 ms total)*

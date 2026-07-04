@@ -8,32 +8,32 @@
 
 ## Geometry, supports & loads
 
-![geometry](img/01-geometry.svg)
+![geometry](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-geometry.svg)
 
 ## CalculiX mesh
 
-![mesh](img/01-mesh.svg)
+![mesh](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-mesh.svg)
 
 
 ## Deflections (built-in vs CalculiX)
 
-![deformed](img/01-deformed.svg)
+![deformed](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-deformed.svg)
 
 ## Internal forces (built-in solver)
 
-![moment](img/01-moment.svg)
-![shear](img/01-shear.svg)
-![axial](img/01-axial.svg)
+![moment](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-moment.svg)
+![shear](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-shear.svg)
+![axial](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-axial.svg)
 
 ## Stresses and strains
 
-![stress](img/01-stress.svg)
-![strain](img/01-strain.svg)
+![stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-stress.svg)
+![strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-strain.svg)
 
 ### CalculiX field output (.frd, expanded solid mesh)
 
-![ccx stress](img/01-ccx-stress.svg)
-![ccx strain](img/01-ccx-strain.svg)
+![ccx stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-ccx-stress.svg)
+![ccx strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/01-ccx-strain.svg)
 
 ## Key results
 
@@ -59,4 +59,4 @@
 | Max von Mises (CalculiX .frd) | `σ = M/W` | 169.6 | 169.7 MPa | 0.0% | ≤ 6% | ✅ |
 | Max strain (CalculiX .frd, equiv.) | `ε ≈ σ/E` | 8.08e-4 | 7.00e-4 ε | 13.3% | ≤ 25% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 99 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 88 ms total)*

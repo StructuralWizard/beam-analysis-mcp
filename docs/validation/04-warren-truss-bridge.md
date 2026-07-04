@@ -8,32 +8,32 @@
 
 ## Geometry, supports & loads
 
-![geometry](img/04-geometry.svg)
+![geometry](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-geometry.svg)
 
 ## CalculiX mesh
 
-![mesh](img/04-mesh.svg)
+![mesh](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-mesh.svg)
 
 
 ## Deflections (built-in vs CalculiX)
 
-![deformed](img/04-deformed.svg)
+![deformed](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-deformed.svg)
 
 ## Internal forces (built-in solver)
 
-![moment](img/04-moment.svg)
-![shear](img/04-shear.svg)
-![axial](img/04-axial.svg)
+![moment](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-moment.svg)
+![shear](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-shear.svg)
+![axial](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-axial.svg)
 
 ## Stresses and strains
 
-![stress](img/04-stress.svg)
-![strain](img/04-strain.svg)
+![stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-stress.svg)
+![strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-strain.svg)
 
 ### CalculiX field output (.frd, expanded solid mesh)
 
-![ccx stress](img/04-ccx-stress.svg)
-![ccx strain](img/04-ccx-strain.svg)
+![ccx stress](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-ccx-stress.svg)
+![ccx strain](https://raw.githubusercontent.com/StructuralWizard/beam-analysis-mcp/main/docs/validation/img/04-ccx-strain.svg)
 
 ## Key results
 
@@ -55,4 +55,4 @@
 | First diagonal force | `N = (R − w·s/2)/sinθ (compression)` | -1229.2 | -1275.7 kN | 3.8% | ≤ 8% | ✅ |
 | Mid bottom-chord force | `N ≈ M(x)/h (tension)` | 2744.3 | 2741.9 kN | 0.1% | ≤ 8% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 462 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 470 ms total)*
