@@ -95,6 +95,8 @@ which maps to `generate_structure {preset: "beam_bridge", params: {spans: [30,40
 
 ## Validation
 
+Full test documentation — every test case, the theory it checks against, tolerances, and the investigation notes behind the cross-engine differences — is in [docs/VALIDATION.md](docs/VALIDATION.md).
+
 `npm test` checks the solver against closed-form solutions:
 
 - Simply supported beam under UDL: `5wL⁴/384EI` deflection and `wL²/8` moment (exact to 1e-6)
