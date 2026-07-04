@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 760" font-family="Segoe UI, Arial, sans-serif">
+<rect width="1180" height="760" fill="white"/>
+<line x1="62.0" y1="566.0" x2="62.0" y2="319.6" stroke="#ccc" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="62.0" y1="319.6" x2="590.0" y2="214.0" stroke="#ccc" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="590.0" y1="214.0" x2="1118.0" y2="319.6" stroke="#ccc" stroke-width="1.2" stroke-linecap="round"/>
+<line x1="1118.0" y1="319.6" x2="1118.0" y2="566.0" stroke="#ccc" stroke-width="1.2" stroke-linecap="round"/>
+<polyline points="62.0,566.0 60.3,553.7 58.6,541.4 56.9,529.1 55.2,516.8 53.6,504.5 52.1,492.1 50.6,479.8 49.2,467.5 47.9,455.2 46.7,442.9 45.6,430.6 44.6,418.3 43.8,406.0 43.2,393.7 42.7,381.4 42.4,369.1 42.2,356.7 42.3,344.4 42.6,332.1 43.1,319.8" stroke="#d62728" stroke-width="2" fill="none"/>
+<polyline points="43.1,319.8 69.9,316.7 97.0,315.0 124.4,314.5 151.9,314.9 179.5,316.0 207.3,317.6 235.1,319.6 263.0,321.6 290.8,323.5 318.6,325.3 346.3,326.7 373.9,327.7 401.4,328.1 428.8,327.9 456.1,327.0 483.2,325.3 510.1,322.9 536.9,319.6 563.5,315.5 590.0,310.6" stroke="#d62728" stroke-width="2" fill="none"/>
+<polyline points="590.0,310.6 616.5,315.5 643.1,319.6 669.9,322.9 696.8,325.3 723.9,327.0 751.2,327.9 778.6,328.1 806.1,327.7 833.7,326.7 861.4,325.3 889.2,323.5 917.0,321.6 944.9,319.6 972.7,317.6 1000.5,316.0 1028.1,314.9 1055.6,314.5 1083.0,315.0 1110.1,316.7 1136.9,319.8" stroke="#d62728" stroke-width="2" fill="none"/>
+<polyline points="1136.9,319.8 1137.4,332.1 1137.7,344.4 1137.8,356.7 1137.6,369.1 1137.3,381.4 1136.8,393.7 1136.2,406.0 1135.4,418.3 1134.4,430.6 1133.3,442.9 1132.1,455.2 1130.8,467.5 1129.4,479.8 1127.9,492.1 1126.4,504.5 1124.8,516.8 1123.1,529.1 1121.4,541.4 1119.7,553.7 1118.0,566.0" stroke="#d62728" stroke-width="2" fill="none"/>
+<polygon points="53.0,578.6 71.0,578.6 62.0,566.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<line x1="50.3" y1="578.6" x2="73.7" y2="578.6" stroke="#333" stroke-width="1.6"/>
+<polygon points="1109.0,578.6 1127.0,578.6 1118.0,566.0" fill="none" stroke="#333" stroke-width="1.6"/>
+<line x1="1106.3" y1="578.6" x2="1129.7" y2="578.6" stroke="#333" stroke-width="1.6"/>
+<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Portal frame warehouse (30 m span) — LC1 gravity</text>
+<text x="16.0" y="42.0" font-size="12" fill="#555">deformed shape ×20  ·  built-in solver max 137.28 mm (red)</text>
+<line x1="30.0" y1="734.0" x2="54.0" y2="734.0" stroke="#666" stroke-width="1.4"/>
+<text x="56.0" y="737.0" font-size="10" fill="#666">X</text>
+<line x1="30.0" y1="734.0" x2="30.0" y2="710.0" stroke="#666" stroke-width="1.4"/>
+<text x="32.0" y="713.0" font-size="10" fill="#666">Z</text>
+</svg>

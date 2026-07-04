@@ -63,6 +63,7 @@ Optional environment variables:
 | `add_nodes` / `add_material` / `add_section` / `add_members` / `add_supports` / `add_loads` | Manual model building |
 | `analyze` | Run linear-static analysis (`beam`, `calculix`, or `both` with comparison) |
 | `get_results` | Detailed displacements, reactions, or member force envelopes |
+| `render_model` | Render an SVG figure: geometry, mesh, deformed shape, moment/shear/axial diagrams, stress/strain maps |
 | `export_freecad` | Save a solid 3D `.FCStd` model (opens in FreeCAD) |
 | `export_calculix_inp` | Write the CalculiX `.inp` deck without solving |
 | `model_info` / `list_models` / `delete_model` | Session management |
@@ -96,6 +97,8 @@ which maps to `generate_structure {preset: "beam_bridge", params: {spans: [30,40
 ## Validation
 
 Full test documentation — every test case, the theory it checks against, tolerances, and the investigation notes behind the cross-engine differences — is in [docs/VALIDATION.md](docs/VALIDATION.md).
+
+An **illustrated per-structure validation report** for all 10 typologies — geometry/supports/loads figures, CalculiX meshes, load cases with superposition checks, deformed shapes (built-in vs CalculiX overlay), moment/shear/axial diagrams, stress & strain maps, CalculiX von Mises fields parsed from `.frd`, and 35 analytical hand-calculation checks — is in [docs/validation/](docs/validation/README.md).
 
 `npm test` checks the solver against closed-form solutions:
 

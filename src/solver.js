@@ -208,6 +208,7 @@ export function analyzeBeamEngine(model, opts = {}) {
       Nmin: Infinity, Nmax: -Infinity, VyMax: 0, VzMax: 0,
       MyMax: 0, MzMax: 0, T: Math.abs(floc[3]), stressMax: 0, deflMax: 0, deflAt: 0,
     };
+    const stations = [];
     for (let s = 0; s < samples; s++) {
       const x = (L * s) / (samples - 1);
       const N = -(floc[0] + wl[0] * x);
@@ -243,6 +244,7 @@ export function analyzeBeamEngine(model, opts = {}) {
       }
       const dg = m3tv(e.R, [ux, vy, vz]);
       const mag = Math.hypot(dg[0], dg[1], dg[2]);
+      stations.push({ x, N, Vy, Vz, My, Mz, stress, disp: dg });
       if (mag > env.deflMax) { env.deflMax = mag; env.deflAt = x; }
       if (mag > maxDisp.value) {
         maxDisp = { value: mag, node: null, member: e.m.id, at: +x.toFixed(3), vector: dg };
@@ -256,6 +258,7 @@ export function analyzeBeamEngine(model, opts = {}) {
       endForcesLocal: Array.from(floc),
       stressMax: env.stressMax, utilization: util,
       deflMax: env.deflMax,
+      stations,
     });
   }
 

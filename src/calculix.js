@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { m3tv } from './linalg.js';
+import { parseFrd, mapToChains } from './frd.js';
 
 const execFileP = promisify(execFile);
 const G = 9.80665;
@@ -101,6 +102,12 @@ export function writeInpContent(model, opts = {}) {
       'indeterminate 3D frames can exceed the built-in solver\'s (both are internally consistent)'
     );
   }
+  notes.push(
+    'reported CalculiX reactions are RF at constrained DOFs corrected for loads applied at the support nodes; ' +
+    'they can still under-report by a few % where supports form knots or members carry axial self-weight ' +
+    '(a ccx printout artifact — internal equilibrium is exact). The built-in engine reactions are checked ' +
+    'against ΣF exactly.'
+  );
   L.push('*HEADING');
   L.push(`beam-analysis-mcp model: ${model.name}`);
   L.push('*NODE, NSET=NALL');
@@ -190,18 +197,45 @@ export function writeInpContent(model, opts = {}) {
       f.forEach((v, i) => { if (v) L.push(`${cid}, ${i + 1}, ${fmt(v)}`); });
     }
   }
+  // track external loads applied at each node: ccx's printed RF at a constrained
+  // node excludes loads applied directly at that node, so true reactions need
+  // R = RF - applied (verified against closed-form cases)
+  const applied = new Map();
+  const addApplied = (cid, i, v) => {
+    if (!applied.has(cid)) applied.set(cid, [0, 0, 0]);
+    applied.get(cid)[i] += v;
+  };
+  for (const [cid, f] of cload) for (let i = 0; i < 3; i++) if (f[i]) addApplied(cid, i, f[i]);
   if (model.loads.selfWeightFactor) {
     const noDensity = [...model.materials.values()].filter((m) => !(m.density > 0));
     if (noDensity.length) notes.push(`self-weight requested but materials without density: ${noDensity.map((m) => m.name).join(', ')}`);
     L.push('*DLOAD');
     L.push(`EALL, GRAV, ${fmt(G * model.loads.selfWeightFactor)}, 0., 0., -1.`);
+    // consistent nodal shares of element weight (quadratic element: 1/6 per end node)
+    for (const m of model.members.values()) {
+      const sec = model.sections.get(m.section);
+      const mat = model.materials.get(m.material);
+      if (!(mat.density > 0)) continue;
+      const geo = model.memberGeometry(m);
+      const chain = mesh.memberSegNodes.get(m.id);
+      const segW = mat.density * sec.A * G * model.loads.selfWeightFactor * (geo.L / (chain.length - 1));
+      for (let s = 0; s < chain.length - 1; s++) {
+        addApplied(chain[s], 2, -segW / 6);
+        addApplied(chain[s + 1], 2, -segW / 6);
+      }
+    }
   }
   L.push('*NODE PRINT, NSET=NALL');
   L.push('U');
   L.push('*NODE PRINT, NSET=NSUPP');
   L.push('RF');
+  // field output (.frd): displacements, stresses and strains on the expanded mesh
+  L.push('*NODE FILE');
+  L.push('U');
+  L.push('*EL FILE');
+  L.push('S, E');
   L.push('*END STEP');
-  return { content: L.join('\n') + '\n', mesh, notes };
+  return { content: L.join('\n') + '\n', mesh, notes, applied };
 }
 
 function parseDat(dat) {
@@ -234,7 +268,7 @@ export async function runCalculix(model, opts = {}) {
       'or set the CCX_PATH environment variable to the ccx executable.'
     );
   }
-  const { content, mesh, notes } = writeInpContent(model, opts);
+  const { content, mesh, notes, applied } = writeInpContent(model, opts);
   const jobDir = fs.mkdtempSync(path.join(os.tmpdir(), 'beam-mcp-ccx-'));
   const job = 'job';
   fs.writeFileSync(path.join(jobDir, job + '.inp'), content);
@@ -273,22 +307,65 @@ export async function runCalculix(model, opts = {}) {
     if (modelIdOf.has(cid)) displacements.push(entry);
     if (mag > maxDisp.value) maxDisp = { value: mag, node: entry.node, vector: d };
   }
+  // true reactions: only constrained DOFs count, and ccx's RF excludes loads
+  // applied directly at the node, so add them back (R = RF - applied)
+  const dofsOfCcx = new Map();
+  for (const [nid, dofs] of model.supports) dofsOfCcx.set(mesh.nodeIdOf.get(nid), dofs);
   const reactions = [];
   const sumR = [0, 0, 0];
   for (const [cid, r] of parsed.reactions) {
-    if (!modelIdOf.has(cid)) continue;
-    reactions.push({ node: modelIdOf.get(cid), fx: r[0], fy: r[1], fz: r[2] });
-    sumR[0] += r[0]; sumR[1] += r[1]; sumR[2] += r[2];
+    const dofs = dofsOfCcx.get(cid);
+    if (!dofs || !modelIdOf.has(cid)) continue;
+    const app = applied.get(cid) || [0, 0, 0];
+    const rr = [0, 1, 2].map((i) => (dofs[i] ? r[i] - app[i] : 0));
+    if (rr.every((v) => v === 0)) continue;
+    reactions.push({ node: modelIdOf.get(cid), fx: rr[0], fy: rr[1], fz: rr[2] });
+    sumR[0] += rr[0]; sumR[1] += rr[1]; sumR[2] += rr[2];
   }
+  // field results (.frd): stresses/strains on the expanded solid mesh, mapped
+  // back onto the beam axis nodes for reporting and rendering
+  let field = null;
+  try {
+    const frdPath = path.join(jobDir, job + '.frd');
+    if (fs.existsSync(frdPath)) {
+      const frd = parseFrd(fs.readFileSync(frdPath, 'utf8'));
+      if (frd.fields.STRESS || frd.fields.DISP) {
+        const chains = new Map();
+        const radii = new Map();
+        for (const m of model.members.values()) {
+          const chain = mesh.memberSegNodes.get(m.id).map((cid) => {
+            const n = mesh.nodes[cid - 1];
+            return { x: n.x, y: n.y, z: n.z };
+          });
+          chains.set(m.id, chain);
+          const d = model.sections.get(m.section).dims;
+          const maxDim = d.kind === 'cylinder' ? 2 * d.r : Math.max(d.b, d.h);
+          radii.set(m.id, 0.75 * maxDim + 0.02);
+        }
+        const mapped = mapToChains(frd, chains, radii);
+        field = {
+          maxVonMises: mapped.maxVm,
+          maxEqStrain: mapped.maxEvm,
+          chains: mapped.chains,
+          chainCoords: chains,
+        };
+      }
+    }
+  } catch (err) {
+    notes.push(`frd field output not parsed: ${err.message}`);
+  }
+
   return {
     engine: 'calculix',
     ccxPath: ccx,
     jobDir,
     mesh: { nodes: mesh.nodes.length, elements: mesh.elements.length },
+    meshData: mesh,
     notes,
     maxDisplacement: maxDisp,
     displacements,
     reactions,
+    field,
     totals: { reactionForce: sumR },
   };
 }

@@ -4,6 +4,13 @@ This document describes every automated test in the repository, the theory each 
 checks against, the acceptance tolerances, and the results of the 10-typology
 cross-validation between the built-in solver and CalculiX.
 
+> **Per-structure illustrated report**: [docs/validation/](validation/README.md) contains a
+> dedicated page for each of the 10 typologies with figures (geometry, supports, loads,
+> CalculiX mesh, load cases, deformed shapes, N/V/M diagrams, stress and strain maps,
+> CalculiX von Mises fields parsed from `.frd`) and per-structure analytical checks —
+> 35 hand-calculation checks in total, all passing. Regenerate it with
+> `node examples/validation-report.js`.
+
 Reference machine for the recorded results: Windows 11, Node 25, FreeCAD 1.1
 (bundled CalculiX 2.22 at `C:\Program Files\FreeCAD 1.1\bin\ccx.exe`).
 
@@ -65,9 +72,26 @@ accidentally printing to stdout, which would corrupt the protocol stream).
 ## 3. CalculiX cross-validation (`test/solver.test.js`, skipped without ccx)
 
 Simply supported beam (6 m, UDL), built-in engine vs CalculiX B32R deck with 8
-subdivisions: max deflection must agree within **3%** (measured: <1%). The residual
-difference is physical — ccx expands beams into solid elements, which include shear
-deformation absent from Euler-Bernoulli theory.
+subdivisions:
+
+- max deflection must agree within **3%** (measured: <1%) — the residual is physical,
+  since ccx's expanded solid elements include shear deformation absent from
+  Euler-Bernoulli theory;
+- the corrected ccx reaction sum must recover the applied load within **0.5%**;
+- the von Mises stress parsed from the ccx `.frd` field output must match the
+  analytical bending stress M/W within **6%** (measured: <1%).
+
+### CalculiX reaction (RF) semantics — investigated
+
+ccx's `RF` printout at a node **excludes external loads applied at that node** (probe:
+an end-tributary UDL load of 7.5 kN was missing exactly; gravity was low by exactly
+wL/12 — the consistent-load end share of the two end elements). The runner therefore
+reports reactions only at constrained DOFs and adds back the known nodal loads, which
+makes simple bearing configurations exact. Where support nodes form expansion "knots"
+(fixed rotations, beam-column joints) or members carry *axial* self-weight, RF can
+still under-report by a few percent — a printout artifact of the expanded solid model,
+not an equilibrium error. The built-in engine's reactions are checked against ΣF
+exactly and are authoritative.
 
 ## 4. Ten-typology cross-validation (`examples/run-typologies.js`)
 

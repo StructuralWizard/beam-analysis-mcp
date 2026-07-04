@@ -14,6 +14,8 @@ import { analyzeBeamEngine } from './solver.js';
 import { runCalculix, writeInpContent, findCcx } from './calculix.js';
 import { exportFCStd, findFreecadCmd } from './freecad.js';
 import { listPresets, generateStructure } from './generators.js';
+import { figGeometry, figMesh, figDeformed, figDiagram, figAxial, figColorMap } from './render.js';
+import { writeInpContent as buildMeshOnly } from './calculix.js';
 import fs from 'node:fs';
 
 const models = new Map();
@@ -85,6 +87,10 @@ function summarizeCcxResults(res) {
       vector_mm: res.maxDisplacement.vector.map((v) => r(v * 1000)),
     },
     sumReactions_kN: res.totals.reactionForce.map((v) => r(v / 1e3)),
+    ...(res.field ? {
+      maxVonMises_MPa: r(res.field.maxVonMises / 1e6),
+      maxEquivalentStrain: r(res.field.maxEqStrain),
+    } : {}),
   };
 }
 
@@ -352,6 +358,45 @@ server.registerTool('export_calculix_inp', {
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, content);
   return ok({ path: target, nodes: mesh.nodes.length, elements: mesh.elements.length, notes });
+});
+
+server.registerTool('render_model', {
+  title: 'Render model figure (SVG)',
+  description: 'Render the model to an SVG figure for visual feedback: "geometry" (members, supports, loads), "mesh" (CalculiX discretization), or — after analyze with the beam engine — "deformed", "moment", "shear", "axial", "stress", "strain". Saves the SVG and returns its path.',
+  inputSchema: {
+    model: z.string(),
+    figure: z.enum(['geometry', 'mesh', 'deformed', 'moment', 'shear', 'axial', 'stress', 'strain']),
+    path: z.string().optional().describe('Output .svg path (default: <output dir>/<model>-<figure>.svg)'),
+  },
+}, async ({ model, figure, path: outPath }) => {
+  const m = getModel(model);
+  const res = m.results.beam;
+  const needRes = !['geometry', 'mesh'].includes(figure);
+  if (needRes && !res) throw new Error(`Run analyze with engine "beam" before rendering "${figure}"`);
+  let svg;
+  if (figure === 'geometry') svg = figGeometry(m, `${m.name} — geometry, supports & loads`);
+  else if (figure === 'mesh') svg = figMesh(m, buildMeshOnly(m, {}).mesh, `${m.name} — CalculiX mesh`);
+  else if (figure === 'deformed') svg = figDeformed(m, res, `${m.name} — deformed shape`, {});
+  else if (figure === 'moment') {
+    const my = Math.max(...res.members.map((x) => x.My)), mz = Math.max(...res.members.map((x) => x.Mz));
+    svg = figDiagram(m, res, my >= mz ? 'My' : 'Mz', `${m.name} — bending moment`, 'N·m');
+  } else if (figure === 'shear') {
+    const vy = Math.max(...res.members.map((x) => x.Vy)), vz = Math.max(...res.members.map((x) => x.Vz));
+    svg = figDiagram(m, res, vz >= vy ? 'Vz' : 'Vy', `${m.name} — shear force`, 'N');
+  } else if (figure === 'axial') svg = figAxial(m, res, `${m.name} — axial force`);
+  else {
+    const sMax = Math.max(...res.members.map((x) => x.stressMax));
+    const E = [...m.materials.values()][0].E;
+    if (figure === 'stress') {
+      svg = figColorMap(m, res, (st) => st.stress, `${m.name} — normal stress`, `max ${(sMax / 1e6).toFixed(1)} MPa`, 'Pa', 0, sMax);
+    } else {
+      svg = figColorMap(m, res, (st) => st.stress / E, `${m.name} — normal strain`, `max ${(sMax / E).toExponential(2)}`, 'ε', 0, sMax / E);
+    }
+  }
+  const target = outPath || path.join(OUT_DIR, `${m.name}-${figure}.svg`);
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, svg);
+  return ok({ path: target, figure });
 });
 
 // ---------- management ----------

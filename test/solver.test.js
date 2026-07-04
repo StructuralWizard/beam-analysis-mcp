@@ -150,4 +150,11 @@ test('CalculiX cross-validation: SS beam deflection within 3%', { skip: !findCcx
   const cx = await runCalculix(m, { subdivisions: 8 });
   const diff = Math.abs(js.maxDisplacement.value - cx.maxDisplacement.value) / js.maxDisplacement.value;
   assert.ok(diff < 0.03, `beam=${js.maxDisplacement.value} ccx=${cx.maxDisplacement.value} diff=${(diff * 100).toFixed(2)}%`);
+  // corrected ccx reactions must recover the full applied load
+  const sumRz = cx.totals.reactionForce[2];
+  assert.ok(Math.abs(sumRz - w * L) / (w * L) < 0.005, `ccx sum Rz ${sumRz} vs applied ${w * L}`);
+  // frd field output: bending stress must match M/W
+  const sigma = (w * L * L) / 8 / m.sections.get('r').Wy;
+  assert.ok(Math.abs(cx.field.maxVonMises - sigma) / sigma < 0.06,
+    `ccx von Mises ${cx.field.maxVonMises} vs analytical ${sigma}`);
 });
