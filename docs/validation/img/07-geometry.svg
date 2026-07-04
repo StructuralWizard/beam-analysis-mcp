@@ -100,7 +100,7 @@
 <polyline points="590.0,188.0 615.1,193.0 640.3,198.1 665.4,203.1 690.6,208.1 715.7,213.1 740.9,218.2 766.0,223.2 791.1,228.2 816.3,233.3 841.4,238.3 866.6,243.3 891.7,248.3 916.9,253.4 942.0,258.4 967.1,263.4 992.3,268.5 1017.4,273.5 1042.6,278.5 1067.7,283.5 1092.9,288.6 1118.0,293.6" stroke="#d62728" stroke-width="1" fill="none"/>
 <line x1="26.0" y1="319.6" x2="62.0" y2="319.6" stroke="#9467bd" stroke-width="2"/>
 <polygon points="62.0,319.6 51.2,323.2 51.2,316.0" fill="#9467bd"/>
-<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Portal frame warehouse (30 m span) — geometry, supports & loads</text>
+<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Portal frame warehouse (30 m span) — geometry, supports &amp; loads</text>
 <text x="16.0" y="42.0" font-size="12" fill="#555">5 nodes, 4 members  ·  max UDL 10.0 kN/m   ·   max point load 25.0 kN   ·   self-weight ×1</text>
 <line x1="30.0" y1="734.0" x2="54.0" y2="734.0" stroke="#666" stroke-width="1.4"/>
 <text x="56.0" y="737.0" font-size="10" fill="#666">X</text>

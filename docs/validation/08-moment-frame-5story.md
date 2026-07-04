@@ -69,4 +69,4 @@ The combination above superposes the individual load cases (linear analysis). De
 | Vertical equilibrium | `ΣV = W` | 2920.3 | 2920.3 kN | 0.0% | ≤ 0.1% | ✅ |
 | Interior beam mid moment | `wL²/16 ≤ M ≤ wL²/8 (band midpoint shown)` | 104.5 | 47.3 kN·m | 54.7% | ≤ 55% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 254 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 232 ms total)*

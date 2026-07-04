@@ -59,4 +59,4 @@
 | Max von Mises (CalculiX .frd) | `σ = M/W` | 169.6 | 169.7 MPa | 0.0% | ≤ 6% | ✅ |
 | Max strain (CalculiX .frd, equiv.) | `ε ≈ σ/E` | 8.08e-4 | 7.00e-4 ε | 13.3% | ≤ 25% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 88 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 89 ms total)*

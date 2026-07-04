@@ -55,4 +55,4 @@
 | Crown axial force | `N ≈ −H (compression)` | -5645.9 | -5160.1 kN | 8.6% | ≤ 12% | ✅ |
 | Springing vertical reaction | `V = W/2 (per springing pair)` | 4516.7 | 4516.7 kN | 0.0% | ≤ 15% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 267 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 279 ms total)*

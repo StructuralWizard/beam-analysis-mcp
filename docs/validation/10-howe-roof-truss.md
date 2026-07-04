@@ -55,4 +55,4 @@
 | Heel top-chord force | `N = −R/sinθ` | -238.2 | -222.6 kN | 6.6% | ≤ 10% | ✅ |
 | First bottom-chord force | `N = R/tanθ` | 229.1 | 213.5 kN | 6.8% | ≤ 10% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 146 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 181 ms total)*

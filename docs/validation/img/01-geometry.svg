@@ -113,7 +113,7 @@
 <line x1="1118.0" y1="364.0" x2="1118.0" y2="390.0" stroke="#d62728" stroke-width="1.1"/>
 <polygon points="1118.0,390.0 1114.4,379.2 1121.6,379.2" fill="#d62728"/>
 <polyline points="942.0,364.0 967.1,364.0 992.3,364.0 1017.4,364.0 1042.6,364.0 1067.7,364.0 1092.9,364.0 1118.0,364.0" stroke="#d62728" stroke-width="1" fill="none"/>
-<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Simply supported girder bridge (35 m) — geometry, supports & loads</text>
+<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Simply supported girder bridge (35 m) — geometry, supports &amp; loads</text>
 <text x="16.0" y="42.0" font-size="12" fill="#555">7 nodes, 6 members  ·  max UDL 50.0 kN/m   ·   self-weight ×1</text>
 <line x1="30.0" y1="734.0" x2="54.0" y2="734.0" stroke="#666" stroke-width="1.4"/>
 <text x="56.0" y="737.0" font-size="10" fill="#666">X</text>

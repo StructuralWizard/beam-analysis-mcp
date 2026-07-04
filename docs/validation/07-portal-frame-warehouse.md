@@ -70,4 +70,4 @@ The combination above superposes the individual load cases (linear analysis). De
 | Right eave moment | `M = |H_right|·h (exact statics)` | 751.4 | 751.4 kN·m | 0.0% | ≤ 0.5% | ✅ |
 | Vertical equilibrium | `ΣV = W` | 360.6 | 360.6 kN | 0.0% | ≤ 0.1% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 87 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 77 ms total)*

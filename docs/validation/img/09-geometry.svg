@@ -1020,7 +1020,7 @@
 <polygon points="496.2,254.5 488.6,263.1 485.0,256.8" fill="#9467bd"/>
 <line x1="371.1" y1="218.4" x2="402.3" y2="200.4" stroke="#9467bd" stroke-width="2"/>
 <polygon points="402.3,200.4 394.8,208.9 391.2,202.6" fill="#9467bd"/>
-<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">6-story 3D braced tower (2×2 bays) — geometry, supports & loads</text>
+<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">6-story 3D braced tower (2×2 bays) — geometry, supports &amp; loads</text>
 <text x="16.0" y="42.0" font-size="12" fill="#555">63 nodes, 174 members  ·  max UDL 25.0 kN/m   ·   max point load 13.3 kN   ·   self-weight ×1</text>
 <line x1="30.0" y1="734.0" x2="50.8" y2="722.0" stroke="#666" stroke-width="1.4"/>
 <text x="52.8" y="725.0" font-size="10" fill="#666">X</text>

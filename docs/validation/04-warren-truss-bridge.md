@@ -55,4 +55,4 @@
 | First diagonal force | `N = (R − w·s/2)/sinθ (compression)` | -1229.2 | -1275.7 kN | 3.8% | ≤ 8% | ✅ |
 | Mid bottom-chord force | `N ≈ M(x)/h (tension)` | 2744.3 | 2741.9 kN | 0.1% | ≤ 8% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 470 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 482 ms total)*

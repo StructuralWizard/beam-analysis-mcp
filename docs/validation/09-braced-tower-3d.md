@@ -69,4 +69,4 @@ The combination above superposes the individual load cases (linear analysis). De
 | Vertical equilibrium | `ΣV = W` | 11560.9 | 11560.9 kN | 0.0% | ≤ 0.1% | ✅ |
 | Ground-story brace force (wind part) | `N = (N_A − N_B)/2 ≈ (V/4)·L_b/dx` | 69.5 | 56.4 kN | 18.9% | ≤ 25% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 999 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 1065 ms total)*

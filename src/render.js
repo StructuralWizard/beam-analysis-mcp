@@ -5,6 +5,11 @@
 
 const VIRIDIS = ['#440154', '#3b528b', '#21918c', '#5ec962', '#fde725'];
 
+// SVG is strict XML: raw &, < and > in text content make the whole file unparseable
+function escXml(s) {
+  return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
+
 function lerpColor(c1, c2, t) {
   const p = (c) => [parseInt(c.slice(1, 3), 16), parseInt(c.slice(3, 5), 16), parseInt(c.slice(5, 7), 16)];
   const a = p(c1), b = p(c2);
@@ -75,7 +80,7 @@ export class SvgScene {
   poly(pts, attrs) { this.add(`<polyline points="${pts.map((q) => q[0].toFixed(1) + ',' + q[1].toFixed(1)).join(' ')}" ${attrs}/>`); }
   polygon(pts, attrs) { this.add(`<polygon points="${pts.map((q) => q[0].toFixed(1) + ',' + q[1].toFixed(1)).join(' ')}" ${attrs}/>`); }
   circle(c, r, attrs) { this.add(`<circle cx="${c[0].toFixed(1)}" cy="${c[1].toFixed(1)}" r="${r}" ${attrs}/>`); }
-  text(c, str, attrs = 'font-size="11" fill="#333"') { this.add(`<text x="${c[0].toFixed(1)}" y="${c[1].toFixed(1)}" ${attrs}>${str}</text>`); }
+  text(c, str, attrs = 'font-size="11" fill="#333"') { this.add(`<text x="${c[0].toFixed(1)}" y="${c[1].toFixed(1)}" ${attrs}>${escXml(str)}</text>`); }
 
   arrow(tip, dir, len, color = '#d62728', width = 1.6) {
     const n = Math.hypot(dir[0], dir[1]) || 1;

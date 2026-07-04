@@ -55,4 +55,4 @@
 | End-post axial force | `N = (R − w·s/2)/sinθ (compression)` | -1380.2 | -1430.6 kN | 3.6% | ≤ 6% | ✅ |
 | Mid bottom-chord force | `N ≈ M(x)/h (tension)` | 2123.9 | 2071.9 kN | 2.4% | ≤ 8% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 448 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 440 ms total)*

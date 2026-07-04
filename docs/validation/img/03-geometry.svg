@@ -292,7 +292,7 @@
 <line x1="952.3" y1="133.1" x2="952.3" y2="159.1" stroke="#d62728" stroke-width="1.1"/>
 <polygon points="952.3,159.1 948.7,148.3 955.9,148.3" fill="#d62728"/>
 <polyline points="849.8,192.3 870.3,180.5 890.8,168.6 911.3,156.8 931.8,144.9 952.3,133.1" stroke="#d62728" stroke-width="1" fill="none"/>
-<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Pratt truss bridge (60 m, 8 panels) — geometry, supports & loads</text>
+<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Pratt truss bridge (60 m, 8 panels) — geometry, supports &amp; loads</text>
 <text x="16.0" y="42.0" font-size="12" fill="#555">32 nodes, 74 members  ·  max UDL 30.0 kN/m   ·   self-weight ×1</text>
 <line x1="30.0" y1="734.0" x2="50.8" y2="722.0" stroke="#666" stroke-width="1.4"/>
 <text x="52.8" y="725.0" font-size="10" fill="#666">X</text>

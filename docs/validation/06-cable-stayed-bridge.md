@@ -55,4 +55,4 @@
 | Pylon axial below deck | `N ≈ −(W − R_ends)` | -15527.3 | -15527.3 kN | 0.0% | ≤ 5% | ✅ |
 | Vertical equilibrium | `ΣR = W` | 19258.0 | 19258.0 kN | 0.0% | ≤ 0.1% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 135 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 146 ms total)*

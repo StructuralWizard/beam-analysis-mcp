@@ -297,7 +297,7 @@
 <line x1="953.2" y1="139.6" x2="953.2" y2="165.6" stroke="#d62728" stroke-width="1.1"/>
 <polygon points="953.2,165.6 949.6,154.8 956.8,154.8" fill="#d62728"/>
 <polyline points="851.3,198.4 871.7,186.7 892.0,174.9 912.4,163.1 932.8,151.4 953.2,139.6" stroke="#d62728" stroke-width="1" fill="none"/>
-<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Warren truss bridge (64 m, 8 panels) — geometry, supports & loads</text>
+<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Warren truss bridge (64 m, 8 panels) — geometry, supports &amp; loads</text>
 <text x="16.0" y="42.0" font-size="12" fill="#555">34 nodes, 79 members  ·  max UDL 30.0 kN/m   ·   self-weight ×1</text>
 <line x1="30.0" y1="734.0" x2="50.8" y2="722.0" stroke="#666" stroke-width="1.4"/>
 <text x="52.8" y="725.0" font-size="10" fill="#666">X</text>

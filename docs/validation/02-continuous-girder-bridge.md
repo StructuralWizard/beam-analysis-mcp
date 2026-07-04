@@ -55,4 +55,4 @@
 | End reaction | `R = wL₁/2 + M₁/L₁` | 651.0 | 651.0 kN | 0.0% | ≤ 2% | ✅ |
 | Mid-span-2 moment | `M = wL₂²/8 + M₁` | 4442.2 | 4442.2 kN·m | 0.0% | ≤ 6% | ✅ |
 
-*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 149 ms total)*
+*(built-in solver values unless marked; CalculiX values from parsed `.dat`/`.frd` output; 137 ms total)*

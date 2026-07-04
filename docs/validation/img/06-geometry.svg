@@ -142,7 +142,7 @@
 <line x1="1118.0" y1="484.7" x2="1118.0" y2="510.7" stroke="#d62728" stroke-width="1.1"/>
 <polygon points="1118.0,510.7 1114.4,499.9 1121.6,499.9" fill="#d62728"/>
 <polyline points="1030.0,484.7 1059.3,484.7 1088.7,484.7 1118.0,484.7" stroke="#d62728" stroke-width="1" fill="none"/>
-<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Cable-stayed bridge (140 m deck, 40 m pylon) — geometry, supports & loads</text>
+<text x="16.0" y="24.0" font-size="16" font-weight="bold" fill="#111">Cable-stayed bridge (140 m deck, 40 m pylon) — geometry, supports &amp; loads</text>
 <text x="16.0" y="42.0" font-size="12" fill="#555">15 nodes, 26 members  ·  max UDL 100 kN/m   ·   self-weight ×1</text>
 <line x1="30.0" y1="734.0" x2="54.0" y2="734.0" stroke="#666" stroke-width="1.4"/>
 <text x="56.0" y="737.0" font-size="10" fill="#666">X</text>
